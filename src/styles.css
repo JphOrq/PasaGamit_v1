@@ -1,0 +1,298 @@
+/*
+ * Tailwind v4 entry. Fonts are loaded via <link> in src/routes/__root.tsx.
+ * PasaGamit design system: newsprint + sari-sari + campus bulletin board.
+ */
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-marker: "Permanent Marker", "Comic Sans MS", cursive;
+
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  /* Brand tokens */
+  --color-newsprint: var(--newsprint);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-sari: var(--sari);
+  --color-mustard: var(--mustard);
+  --color-mustard-foreground: var(--mustard-foreground);
+  --color-forest: var(--forest);
+  --color-forest-foreground: var(--forest-foreground);
+  --color-cork: var(--cork);
+  --color-cork-foreground: var(--cork-foreground);
+  --color-soft: var(--soft);
+
+  --color-chart-1: var(--sari);
+  --color-chart-2: var(--mustard);
+  --color-chart-3: var(--forest);
+  --color-chart-4: var(--cork);
+  --color-chart-5: var(--ink);
+  --color-sidebar: var(--paper);
+  --color-sidebar-foreground: var(--ink);
+  --color-sidebar-primary: var(--sari);
+  --color-sidebar-primary-foreground: var(--paper);
+  --color-sidebar-accent: var(--soft);
+  --color-sidebar-accent-foreground: var(--ink);
+  --color-sidebar-border: var(--border);
+  --color-sidebar-ring: var(--ring);
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* Raw palette */
+  --newsprint: oklch(0.951 0.021 85.9); /* #F5EEDF */
+  --paper: oklch(0.982 0.012 85.9);
+  --ink: oklch(0.285 0 0); /* #2A2A2A */
+  --ink-foreground: oklch(0.951 0.021 85.9);
+  --sari: oklch(0.57 0.167 34.6); /* #C6482A */
+  --mustard: oklch(0.751 0.137 83); /* #D8A534 */
+  --mustard-foreground: oklch(0.285 0 0);
+  --forest: oklch(0.49 0.061 145.3); /* #4A6A4B */
+  --forest-foreground: oklch(0.951 0.021 85.9);
+  --cork: oklch(0.522 0.076 57.2); /* #8B5E3C */
+  --cork-foreground: oklch(0.951 0.021 85.9);
+  --soft: oklch(0.919 0 0); /* #E4E4E4 */
+
+  /* shadcn semantic mapping */
+  --background: var(--newsprint);
+  --foreground: var(--ink);
+  --card: var(--paper);
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
+  --primary: var(--sari);
+  --primary-foreground: oklch(0.982 0.012 85.9);
+  --secondary: var(--soft);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.915 0.02 85);
+  --muted-foreground: oklch(0.43 0.01 70);
+  --accent: var(--mustard);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.52 0.18 29);
+  --destructive-foreground: oklch(0.982 0.012 85.9);
+  --border: oklch(0.285 0 0 / 0.18);
+  --input: oklch(0.285 0 0 / 0.35);
+  --ring: var(--sari);
+
+  /* Effects */
+  --shadow-flyer: 3px 4px 0 oklch(0.285 0 0 / 0.85);
+  --shadow-flyer-lg: 6px 7px 0 oklch(0.285 0 0 / 0.9);
+  --shadow-pin: 0 6px 14px -6px oklch(0.285 0 0 / 0.45);
+  --gradient-cork:
+    radial-gradient(oklch(0.42 0.07 55 / 0.55) 1px, transparent 1.4px) 0 0 / 7px 7px,
+    radial-gradient(oklch(0.68 0.07 65 / 0.5) 1px, transparent 1.6px) 3px 4px / 9px 9px,
+    linear-gradient(135deg, oklch(0.56 0.08 58), oklch(0.5 0.075 55));
+  --gradient-halftone: radial-gradient(oklch(0.285 0 0 / 0.12) 1px, transparent 1.3px) 0 0 / 6px 6px;
+  --gradient-stripes: repeating-linear-gradient(
+    -45deg,
+    var(--sari) 0 14px,
+    var(--paper) 14px 28px
+  );
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    background-image: var(--gradient-halftone);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+  }
+  :focus-visible {
+    outline: 3px solid var(--sari);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Pinned paper flyer */
+  .flyer {
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    box-shadow: var(--shadow-flyer);
+    position: relative;
+  }
+  .flyer-hover {
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .flyer-hover:hover {
+    transform: translate(-2px, -2px) rotate(-0.4deg);
+    box-shadow: var(--shadow-flyer-lg);
+  }
+  /* Thumbtack */
+  .pin::before {
+    content: "";
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin-left: -8px;
+    border-radius: 9999px;
+    background: radial-gradient(circle at 35% 35%, oklch(0.75 0.15 35), var(--sari) 60%);
+    box-shadow: var(--shadow-pin);
+    z-index: 2;
+  }
+  .tape::after {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    width: 84px;
+    height: 24px;
+    transform: translateX(-50%) rotate(-3deg);
+    background: oklch(0.88 0.06 85 / 0.75);
+    border: 1px dashed oklch(0.285 0 0 / 0.2);
+  }
+  .cork {
+    background: var(--gradient-cork);
+  }
+  .stripes {
+    background: var(--gradient-stripes);
+  }
+  .halftone {
+    background-image: var(--gradient-halftone);
+  }
+  /* Newspaper rules */
+  .rule-double {
+    border-top: 4px double var(--ink);
+  }
+  .rule-thick {
+    border-top: 3px solid var(--ink);
+  }
+  .newspaper-cols {
+    column-gap: 2rem;
+    column-rule: 1px solid var(--color-border);
+  }
+  .drop-cap::first-letter {
+    font-family: var(--font-display);
+    font-weight: 900;
+    float: left;
+    font-size: 3.4rem;
+    line-height: 0.85;
+    padding: 0.2rem 0.5rem 0 0;
+    color: var(--sari);
+  }
+  /* Handwritten price tag */
+  .price-tag {
+    font-family: var(--font-marker);
+    background: var(--mustard);
+    color: var(--mustard-foreground);
+    border: 2px solid var(--ink);
+    padding: 0.15rem 0.65rem 0.15rem 1.1rem;
+    clip-path: polygon(14px 0, 100% 0, 100% 100%, 14px 100%, 0 50%);
+    position: relative;
+    display: inline-block;
+    transform: rotate(-3deg);
+  }
+  .marker {
+    font-family: var(--font-marker);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+  .stamp {
+    font-family: var(--font-marker);
+    border: 2px solid currentColor;
+    padding: 0.1rem 0.5rem;
+    transform: rotate(-6deg);
+    display: inline-block;
+  }
+  .kicker {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .field {
+    width: 100%;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius);
+    padding: 0.6rem 0.75rem;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+  .field:focus-visible {
+    outline: 3px solid var(--sari);
+    outline-offset: 1px;
+  }
+  .field[aria-invalid="true"] {
+    border-color: var(--destructive);
+  }
+}
+
+@utility shadow-flyer {
+  box-shadow: var(--shadow-flyer);
+}
+@utility shadow-flyer-lg {
+  box-shadow: var(--shadow-flyer-lg);
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-ticker {
+  animation: ticker 40s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-ticker {
+    animation: none;
+  }
+  .flyer-hover:hover {
+    transform: none;
+  }
+}
